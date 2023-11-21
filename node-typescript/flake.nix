@@ -1,6 +1,4 @@
 {
-  description = "A collection of Nix Flake templates";
-
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/master";
     systems.url = "github:nix-systems/default";
@@ -17,18 +15,14 @@
           f nixpkgs.legacyPackages.${system}
       );
   in {
-    formatter = eachSystem (pkgs: pkgs.alejandra);
-
-    templates = {
-      minimal = {
-        path = ./minimal;
-        description = "Minimal boilerplate";
+    devShells = eachSystem (pkgs: {
+      default = pkgs.mkShell {
+        buildInputs = with pkgs; [
+          nodejs
+          nodePackages.typescript
+          nodePackages.typescript-language-server
+        ];
       };
-
-      node-typescript = {
-        path = ./node-typescript;
-        description = "Node.js + TypeScript";
-      };
-    };
+    });
   };
 }
