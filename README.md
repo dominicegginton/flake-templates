@@ -1,3 +1,5 @@
+[<img src="https://nixos.org/logo/nixos-logo-only-hires.png" width="100" alt="NixOS">](https://nixos.org)
+
 # Nix Flake Templates
 
 > A collection of Nix Flake templates.
