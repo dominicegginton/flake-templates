@@ -22,6 +22,10 @@
           nodePackages.typescript
           nodePackages.typescript-language-server
         ];
+
+        shellHook = ''
+          export PATH="$PATH:$HOME/.npm/bin"
+        '';
       };
     });
   };

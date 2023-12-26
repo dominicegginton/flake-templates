@@ -19,6 +19,14 @@
   in {
     formatter = eachSystem (pkgs: pkgs.alejandra);
 
+    devShell = eachSystem (pkgs: pkgs.mkShell {
+      packages = with pkgs; [
+        gh
+        alejandra
+        htop
+      ];
+    });
+
     templates = {
       minimal = {
         path = ./minimal;
